@@ -12,8 +12,8 @@ namespace MohawkGame2D
     {
         Vector2 position;
         Vector2 size;
-        float jumpHeight = 100;
-        Vector2 gravity = new Vector2(0, 40);
+        float jumpHeight = 300;
+        Vector2 gravity = new Vector2(0, 500);
         Vector2 velocity;
         public Player(Vector2 position, Vector2 size)
         {
@@ -56,7 +56,6 @@ namespace MohawkGame2D
             if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
             {
                 velocity.Y -= jumpHeight;
-                Console.WriteLine("space working");
             }
         }
     }
