@@ -13,20 +13,26 @@ namespace MohawkGame2D
         Vector2 position;
         Vector2 size;
         float jumpHeight = 300;
-        Vector2 gravity = new Vector2(0, 500);
+        Vector2 gravity = new Vector2(0, 300);
         Vector2 velocity;
+
+        bool gameOver = false;
         public Player(Vector2 position, Vector2 size)
         {
             this.position = position;
             this.size = size;
         }
-        public void Update()
+        public void Update(Obstacles[] gameObstacles)
         {
             
             movement();
             SimulateGravity();
-            colision();
+            colision(gameObstacles);
             PlayerGraphics();
+            if (gameOver == true)
+            {
+                GameOver();
+            }
 
         }
         public void PlayerGraphics()
@@ -42,10 +48,36 @@ namespace MohawkGame2D
                 
             
         }
-        public void colision()
+        public void colision(Obstacles[] gameObstacles)
         {
+            float playerTop = position.Y;
             float playerBottom = position.Y + size.Y;
-            if (playerBottom >= 240)
+            float playerLeft = position.X;
+            float playerRight = position.X + size.X;
+            //collision with obstacles in gameObstacles array
+            for (int i = 0; i < gameObstacles.Length; i++)
+            {
+                Obstacles obstacle = gameObstacles[i];
+
+                float obstacleTop = obstacle.position.Y;
+                float obstacleBottom = obstacle.position.Y + obstacle.size.Y;
+                float obstacleLeft = obstacle.position.X;
+                float obstacleRight = obstacle.position.X + obstacle.size.X;
+
+                bool isColliding = false;
+                if (playerRight > obstacleLeft && playerLeft < obstacleRight && playerBottom > obstacleTop && playerTop < obstacleBottom)
+                {
+                    isColliding = true;
+                }
+
+                if (isColliding == true)
+                {
+                    //effect of collision
+                    gameOver = true;
+                }
+
+            }
+            if (playerBottom > 240)
             {
                 position.Y = 240 - size.Y;
                 velocity.Y = 0;
@@ -57,6 +89,11 @@ namespace MohawkGame2D
             {
                 velocity.Y -= jumpHeight;
             }
+        }
+        public void GameOver()
+        {
+            // Display Game Over Screen
+            Window.ClearBackground(Color.Black);
         }
     }
 }

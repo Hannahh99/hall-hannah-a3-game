@@ -8,6 +8,12 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
+        //game state control
+        public bool titleScreen = false;
+        public bool gameRunning = true;
+        public bool rulesScreen = false;
+        //not in use
+        
         Player Character = new Player(new Vector2(50, 100), new Vector2(20, 40));
 
         Obstacles[] gameObstacles =
@@ -23,9 +29,20 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            PlayerCreation();
-            BackgroundGeneration();
-            Score();
+            if(titleScreen == true)
+            {
+
+            }
+            if (rulesScreen == true)
+            {
+
+            }
+            if (gameRunning == true)
+            {
+                BackgroundGeneration();
+                Score();
+                PlayerCreation();
+            }
         }
 
         public void BackgroundGeneration()
@@ -40,7 +57,7 @@ namespace MohawkGame2D
         }
         public void PlayerCreation()
         {
-            Character.Update();
+            Character.Update(gameObstacles);
         }
 
         public void Score()
@@ -53,11 +70,6 @@ namespace MohawkGame2D
             
         }
 
-        public void GameOver()
-        {
-            // Display Game Over Screen
-            Window.ClearBackground(Color.Black);
-        }
     }
 
 }

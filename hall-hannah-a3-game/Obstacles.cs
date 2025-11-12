@@ -10,8 +10,8 @@ namespace MohawkGame2D
 {
     internal class Obstacles
     {
-        Vector2 position;
-        Vector2 size;
+        public Vector2 position;
+        public Vector2 size;
         float speed = 5;
         public Obstacles(Vector2 position, Vector2 size)
         {
