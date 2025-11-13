@@ -13,7 +13,7 @@ namespace MohawkGame2D
         Vector2 position;
         Vector2 size;
         float jumpHeight = 300;
-        Vector2 gravity = new Vector2(0, 300);
+        Vector2 gravity = new Vector2(0, 700);
         Vector2 velocity;
 
         bool gameOver = false;
@@ -94,6 +94,10 @@ namespace MohawkGame2D
         {
             // Display Game Over Screen
             Window.ClearBackground(Color.Black);
+            // Game Over Text
+            Text.Size = 50;
+            Text.Color = Color.Red;
+            Text.Draw("Game Over", Window.Width / 4 - 10, Window.Height / 2 - 50); ///Make it look centred
         }
     }
 }
