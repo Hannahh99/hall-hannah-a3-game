@@ -97,7 +97,7 @@ namespace MohawkGame2D
             // Game Over Text
             Text.Size = 50;
             Text.Color = Color.Red;
-            Text.Draw("Game Over", Window.Width / 4 - 10, Window.Height / 2 - 50); ///Make it look centred
+            Text.Draw("Game Over", Window.Width / 4 - 10, Window.Height / 2 - 50);
         }
     }
 }

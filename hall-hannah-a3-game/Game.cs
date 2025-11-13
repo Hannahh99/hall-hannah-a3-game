@@ -20,28 +20,28 @@ namespace MohawkGame2D
 
         Obstacles[] gameObstacles =
         {
-            new Obstacles(new Vector2(400, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(800, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(1200, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(400,  220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(700,  220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(1000, 220), new Vector2(40, 20)),
+            new Obstacles(new Vector2(1300, 220), new Vector2(10, 20)),
             new Obstacles(new Vector2(1600, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(2000, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(1900, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(2100, 220), new Vector2(40, 20)),
             new Obstacles(new Vector2(2400, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(2800, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(3200, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(3600, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(4000, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(4400, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(4800, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(5200, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(5600, 220), new Vector2(10, 20)),
-            new Obstacles(new Vector2(6000, 200), new Vector2(10, 40)),
+            new Obstacles(new Vector2(2900, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(3100, 220), new Vector2(20, 20)),
+            new Obstacles(new Vector2(3400, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(3700, 220), new Vector2(10, 20)),
+            new Obstacles(new Vector2(4000, 220), new Vector2(20, 20)),
+            new Obstacles(new Vector2(4300, 220), new Vector2(40, 20)),
+            new Obstacles(new Vector2(4600, 200), new Vector2(20, 40)),
         };
         Button titleButtonPlay = new Button(new Vector2(150, 200), new Vector2(100, 50), "Play");
         Button titleButtonRules = new Button(new Vector2(150, 260), new Vector2(100, 50), "Rules");
         Button rulesButtonBack = new Button(new Vector2(150, 300), new Vector2(100, 50), "Back");
         public void Setup()
         {
-            Window.SetTitle("Block Jump"); /// Remember to change the title
+            Window.SetTitle("Block Jump");
             Window.SetSize(400, 400);
         }
         public void Update()
@@ -78,9 +78,9 @@ namespace MohawkGame2D
 
                 Text.Size = 15;
                 Text.Color = Color.Black;
-                Text.Draw("the goal of this game is to dodge all the incoming obsicals", Window.Width / 3, Window.Height / 2 - 30);
-                Text.Draw("you do this by jumping over them", Window.Width / 3, Window.Height / 2 - 50);
-                Text.Draw("press Space to jump", Window.Width / 3, Window.Height / 2 - 70);
+                Text.Draw("The goal of this game is to dodge all the", Window.Width / 4 - 70, Window.Height / 2 - 70);
+                Text.Draw("incoming obstacles.", Window.Width / 4 + 10, Window.Height / 2 - 50);
+                Text.Draw("Press SPACEBAR to jump", Window.Width / 4, Window.Height / 2 - 30);
 
             }
             if (gameRunning == true)
@@ -88,7 +88,7 @@ namespace MohawkGame2D
                 BackgroundGeneration();
                 Score();
                 PlayerCreation();
-                if (playerScore >= 120)
+                if (playerScore >= 90)
                 {
                     gameWon = true;
                 }
@@ -99,8 +99,8 @@ namespace MohawkGame2D
                 gameRunning = false;
                 Text.Size = 30;
                 Text.Color = Color.Black;
-                Text.Draw("You Win! Passed all obstacles.", Window.Width / 3, Window.Height / 2 - 30);
-                Text.Draw($"Score: {playerScore}", Window.Width / 3, Window.Height / 2 - 50);
+                Text.Draw("You Win!", Window.Width / 4 + 30, Window.Height / 2 - 50);
+                Text.Draw($"Score: {playerScore}", Window.Width / 3, Window.Height / 2 - 20);
             }
         }
 
@@ -126,8 +126,6 @@ namespace MohawkGame2D
             string scoreText = $"{playerScore:00000}";
             Text.Color = Color.Black;
             Text.Draw(scoreText, 10, 5);
-            // Change Font & Size
-
         }
 
     }
