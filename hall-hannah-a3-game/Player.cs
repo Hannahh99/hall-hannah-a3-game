@@ -77,9 +77,16 @@ namespace MohawkGame2D
                 }
 
             }
+            // Floor collision
             if (playerBottom > 240)
             {
                 position.Y = 240 - size.Y;
+                velocity.Y = 0;
+            }
+            // Ceiling collision
+            if (playerTop < 145)
+            {
+                position.Y = 145;
                 velocity.Y = 0;
             }
         }
