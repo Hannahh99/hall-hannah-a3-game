@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace MohawkGame2D
@@ -17,6 +18,9 @@ namespace MohawkGame2D
         Vector2 velocity;
 
         bool gameOver = false;
+
+        public bool isGrounded = true;
+
         public Player(Vector2 position, Vector2 size)
         {
             this.position = position;
@@ -92,9 +96,16 @@ namespace MohawkGame2D
         }
         public void movement()
         {
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            // If space is pressed and player is grounded, jump
+            if (isGrounded && Input.IsKeyboardKeyPressed(KeyboardInput.Space))
             {
                 velocity.Y -= jumpHeight;
+                isGrounded = false;
+            }
+            // If player touches ground, set isGrounded to true to prevent double jump
+            if (position.Y >= 240 - size.Y)
+            {
+                isGrounded = true;
             }
         }
         public void GameOver()
